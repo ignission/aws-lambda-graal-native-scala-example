@@ -2,3 +2,5 @@
 .metals
 target
 metals.sbt
+
+serverless/dist

@@ -45,3 +45,17 @@ lazy val root = (project in file("."))
       )
     }
   )
+  .settings(
+    nativeImageOutput := file("serverless") / "dist" / "bootstrap",
+    nativeImageOptions ++= List(
+      "-H:+ReportExceptionStackTraces",
+      "-H:IncludeResources=.*\\.properties",
+      "-H:ReflectionConfigurationFiles=" + baseDirectory.value / "graal" / "reflect-config.json",
+      "-H:EnableURLProtocols=http,https",
+      "-H:+TraceClassInitialization",
+      "--initialize-at-build-time=scala.runtime.Statics$VM,scala,ch.qos,org.slf4j",
+      "--no-fallback",
+      "--no-server",
+      "--allow-incomplete-classpath"
+    )
+  )
