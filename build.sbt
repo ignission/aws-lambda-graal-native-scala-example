@@ -12,7 +12,6 @@ ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports"
 lazy val commonSettings = Seq(
   version := "0.1.0",
   scalaVersion := "2.13.5",
-  organization := "tech.ignission",
   scalacOptions ++= List(
     "-deprecation",
     "-feature",
