@@ -11,12 +11,13 @@ An example of running a GraalVM native-image with Scala on AWS Lambda.
 - [Logback: Logging](https://github.com/qos-ch/logback)
 - java.net.http: Http client (available from JDK 11)
 
-## Requirements
+## Test this example on your AWS
 
+### Requirements
+
+- AWS Account
 - JDK `11`
 - Node.js `12` or `later`
-
-## Test this example on your AWS
 
 ### Build
 
@@ -35,3 +36,9 @@ AWS_PROFILE=YOUR_AWS_PROFILE_NAME
 ### Deploy
 
     make deploy
+
+## References
+
+Super thanks!
+
+- [akka-graal-native](https://github.com/vmencik/akka-graal-native)
