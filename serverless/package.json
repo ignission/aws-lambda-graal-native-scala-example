@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "serverless": "2.31.0"
+  }
+}

@@ -1,6 +1,13 @@
+## IDE (metals)
 .bloop
 .metals
 target
 metals.sbt
 
+## Node
+node_modules
+
+## Serverless
+.env
+.serverless
 serverless/dist

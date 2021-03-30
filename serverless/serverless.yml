@@ -1,0 +1,26 @@
+service: graal-scala-example
+
+useDotenv: true
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: provided
+  region: ap-northeast-1
+  profile: ${env:AWS_PROFILE} 
+  memorySize: 1024
+  timeout: 29
+
+functions:
+  aws-lambda-graal-native-scala-example:
+    name: "aws-lambda-graal-native-scala-example"
+    description: An example of running a GraalVM native-image with Scala on AWS Lambda
+    handler: hello.handler
+    events:
+      - http:
+          path: /health
+          method: get
+
+package:
+  artifact: dist/lambda.zip
+
