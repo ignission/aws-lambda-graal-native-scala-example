@@ -17,6 +17,12 @@ An example of running a GraalVM native-image with Scala on AWS Lambda.
 
     cp serverless/.env.example serverless/
 
-```serverless/.env
+Edit `serverless/.env`
+
+```
 AWS_PROFILE=YOUR_AWS_PROFILE_NAME
 ```
+
+### Deploy
+
+    make deploy
