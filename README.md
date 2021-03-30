@@ -43,3 +43,7 @@ Super thanks!
 
 - [akka-graal-native](https://github.com/vmencik/akka-graal-native)
 - [scala-native-cli.g8](https://github.com/takezoe/scala-native-cli.g8)
+
+## LICENSE
+
+MIT
