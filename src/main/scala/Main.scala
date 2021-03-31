@@ -59,10 +59,7 @@ object Main extends App {
   ): ZIO[AppType, AppError, HttpResponse] = {
     import formatters.APIGatewayJsonFormats._
 
-    val response = APIGatewayResponse(
-      body = value.asJson.noSpaces,
-      headers = Map("Content-Type" -> "application/json")
-    )
+    val response = APIGatewayResponse(body = value.asJson.noSpaces)
 
     Http
       .post(
