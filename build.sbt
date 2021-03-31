@@ -53,7 +53,7 @@ lazy val root = (project in file("."))
       "-H:ReflectionConfigurationFiles=" + baseDirectory.value / "graal" / "reflect-config.json",
       "-H:EnableURLProtocols=http,https",
       "-H:+TraceClassInitialization",
-      "--initialize-at-build-time=scala.runtime.Statics$VM,scala,ch.qos,org.slf4j",
+      "--initialize-at-build-time=scala.runtime.Statics$VM,scala,ch.qos,org.slf4j,jdk,javax,org.apache,com.sun",
       "--no-fallback",
       "--no-server",
       "--allow-incomplete-classpath"
