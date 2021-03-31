@@ -9,7 +9,7 @@ provider:
   region: ap-northeast-1
   profile: ${env:AWS_PROFILE} 
   memorySize: 1024
-  timeout: 29
+  timeout: 10
 
 functions:
   aws-lambda-graal-native-scala-example:
