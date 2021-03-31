@@ -16,7 +16,7 @@ An example of running a GraalVM native-image with Scala on AWS Lambda.
 ### Requirements
 
 - AWS Account
-- JDK `8` or `later`
+- JDK `1.8` or `later`
 - Node.js `12` or `later`
 
 ### Build

@@ -18,7 +18,7 @@ functions:
     handler: hello.handler
     events:
       - http:
-          path: /health
+          path: /
           method: get
 
 package:
