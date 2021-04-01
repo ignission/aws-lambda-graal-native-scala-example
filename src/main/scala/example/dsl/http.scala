@@ -1,4 +1,4 @@
-package dsl
+package example.dsl
 
 import sttp.client3._
 import sttp.model.Header

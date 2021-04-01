@@ -1,8 +1,8 @@
 package example
 
-import dsl.HttpResponse
-import dsl.http.Http
-import dsl.logger.Logger
+import example.dsl.HttpResponse
+import example.dsl.http.Http
+import example.dsl.logger.Logger
 import io.circe.Encoder
 import io.circe.syntax._
 import zio.{IO, UIO, ZIO}
@@ -56,7 +56,7 @@ object Main extends App {
   private def returnResponse[A](requestId: String, value: A)(implicit
       encoder: Encoder[A]
   ): ZIO[AppType, AppError, HttpResponse] = {
-    import formatters.APIGatewayJsonFormats._
+    import example.formatters.APIGatewayJsonFormats._
 
     val response = APIGatewayResponse.success(value.asJson.noSpaces)
 

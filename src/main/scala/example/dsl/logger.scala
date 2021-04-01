@@ -1,4 +1,4 @@
-package dsl
+package example.dsl
 
 import org.slf4j.LoggerFactory
 import zio.{Has, Layer, UIO, ZIO, ZLayer}
