@@ -5,7 +5,7 @@ import dsl.http.Http
 import dsl.logger.Logger
 import io.circe.Encoder
 import io.circe.syntax._
-import zio.{IO, ZIO}
+import zio.{IO, UIO, ZIO}
 
 object Main extends App {
 
@@ -17,12 +17,12 @@ object Main extends App {
 
   while (true) {
     val program = for {
-      nextInvocation <- getNextInvocation()
-      _              <- Logger.info(s"Request body: ${nextInvocation.body}")
-      requestId      <- getAwsRequestId(nextInvocation)
-      _              <- Logger.info(s"Request id: $requestId")
-      result         <- execute()
-      _              <- returnResponse(requestId, result)
+      request   <- getNextInvocation()
+      _         <- Logger.info(s"Request body: ${request.body}")
+      requestId <- getAwsRequestId(request)
+      _         <- Logger.info(s"Request id: $requestId")
+      result    <- execute(request.body)
+      _         <- returnResponse(requestId, result)
     } yield result
 
     runtime.unsafeRun(
@@ -48,18 +48,17 @@ object Main extends App {
         .getOrElse(Left(RequestIdNotDefined(response.headers)))
     )
 
-  private def execute(): ZIO[AppType, AppError, String] =
-    Http
-      .get("https://api.github.com/users/shomatan/repos")
-      .mapError(e => GitHubRequestFailed(e.getMessage))
-      .map(_.body)
+  private def execute(requestBody: String): ZIO[AppType, AppError, String] =
+    // write some logic ...
+    // This example returns the received request body as is
+    UIO(requestBody)
 
   private def returnResponse[A](requestId: String, value: A)(implicit
       encoder: Encoder[A]
   ): ZIO[AppType, AppError, HttpResponse] = {
     import formatters.APIGatewayJsonFormats._
 
-    val response = APIGatewayResponse(body = value.asJson.noSpaces)
+    val response = APIGatewayResponse.success(value.asJson.noSpaces)
 
     Http
       .post(

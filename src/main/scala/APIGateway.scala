@@ -8,3 +8,10 @@ case class APIGatewayResponse(
     body: String,
     isBase64Encoded: Boolean = false
 )
+
+object APIGatewayResponse {
+  def success(body: String): APIGatewayResponse =
+    APIGatewayResponse(body = body)
+  def fail(body: String, statusCode: Int): APIGatewayResponse =
+    APIGatewayResponse(body = body, statusCode = statusCode)
+}
