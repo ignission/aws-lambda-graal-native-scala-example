@@ -37,6 +37,24 @@ AWS_PROFILE=YOUR_AWS_PROFILE_NAME
 
     make deploy
 
+If the deploy is successful, the following message will be displayed.
+
+```
+GET - https://xxx.execute-api.ap-northeast-1.amazonaws.com/dev/
+functions:
+  aws-lambda-graal-native-scala-example: aws-lambda-graal-native-scala-example
+  layers:
+    None
+    Serverless: Removing old service artifacts from S3...
+```
+
+Now, you can access `https://xxx.execute-api.ap-northeast-1.amazonaws.com/dev/`
+and if you see the following message, you have succeeded.
+
+```
+"Hello, GraalVM native-image with Scala!"
+```
+
 ## References
 
 Super thanks!
