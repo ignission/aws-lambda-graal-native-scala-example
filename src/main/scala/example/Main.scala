@@ -21,7 +21,7 @@ object Main extends App {
       _         <- Logger.info(s"Request body: ${request.body}")
       requestId <- getAwsRequestId(request)
       _         <- Logger.info(s"Request id: $requestId")
-      result    <- execute("Hello, GraalVM native-image with Scala!")
+      result    <- execute("Hello! GraalVM native-image with Scala!")
       _         <- returnResponse(requestId, result)
     } yield result
 
