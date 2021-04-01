@@ -21,7 +21,7 @@ object Main extends App {
       _         <- Logger.info(s"Request body: ${request.body}")
       requestId <- getAwsRequestId(request)
       _         <- Logger.info(s"Request id: $requestId")
-      result    <- execute(request.body)
+      result    <- execute("Hello, GraalVM native-image with Scala!")
       _         <- returnResponse(requestId, result)
     } yield result
 
@@ -48,10 +48,9 @@ object Main extends App {
         .getOrElse(Left(RequestIdNotDefined(response.headers)))
     )
 
-  private def execute(requestBody: String): ZIO[AppType, AppError, String] =
+  private def execute(message: String): ZIO[AppType, AppError, String] =
     // write some logic ...
-    // This example returns the received request body as is
-    UIO(requestBody)
+    UIO.effectTotal(message)
 
   private def returnResponse[A](requestId: String, value: A)(implicit
       encoder: Encoder[A]
