@@ -21,7 +21,7 @@ An example of running a GraalVM native-image with Scala on AWS Lambda.
 
 ### Build
 
-    make dist
+    sbt dist
 
 ### Set up Serverless
 
@@ -35,7 +35,7 @@ AWS_PROFILE=YOUR_AWS_PROFILE_NAME
 
 ### Deploy
 
-    make deploy
+    sbt deploy
 
 If the deploy is successful, the following message will be displayed.
 
