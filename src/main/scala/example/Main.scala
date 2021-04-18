@@ -17,12 +17,12 @@ object Main extends App {
 
   while (true) {
     val program = for {
-      request   <- getNextInvocation()
-      _         <- Logger.info(s"Request body: ${request.body}")
-      requestId <- getAwsRequestId(request)
-      _         <- Logger.info(s"Request id: $requestId")
-      result    <- execute("Hello! GraalVM native-image with Scala!")
-      _         <- returnResponse(requestId, result)
+      invocation <- getNextInvocation()
+      _          <- Logger.info(s"Request body: ${invocation.body}")
+      requestId  <- getAwsRequestId(invocation)
+      _          <- Logger.info(s"Request id: $requestId")
+      result     <- execute("Hello! GraalVM native-image with Scala!")
+      _          <- returnResponse(requestId, result)
     } yield result
 
     runtime.unsafeRun(
