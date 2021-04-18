@@ -1,13 +1,9 @@
 name := "aws-lambda-graal-native-scala-example"
 
-addCommandAlias("fix", "all compile:scalafix; test:scalafix")
-addCommandAlias("fixCheck", "; compile:scalafix --check; test:scalafix --check")
-addCommandAlias("format", "; scalafmt; test:scalafmt; scalafmtSbt")
-addCommandAlias("formatCheck", "; scalafmtCheck; test:scalafmtCheck; scalafmtSbtCheck")
-addCommandAlias("fixAll", "fix; format")
-addCommandAlias("checkAll", "fixCheck; formatCheck")
-
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.5.0"
+
+lazy val fixAll = taskKey[Unit]("Run scalafix / scalafmt")
+lazy val deploy = taskKey[Unit]("Deploy to lambda")
 
 lazy val commonSettings = Seq(
   version := "0.3.0-SNAPSHOT",
@@ -59,3 +55,17 @@ lazy val root = (project in file("."))
       "--allow-incomplete-classpath"
     )
   )
+  .settings(
+    fixAll :=
+      Def
+        .sequential(
+          (Compile / scalafix).toTask(""),
+          (Test / scalafix).toTask(""),
+          (Compile / scalafmt),
+          (Test / scalafmt)
+        )
+        .value,
+    deploy := Serverless.deploy
+  )
+
+addCommandAlias("dist", "clean; fixAll; test; nativeImage")
