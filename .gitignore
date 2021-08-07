@@ -1,3 +1,6 @@
+## IDE (Intellij)
+.idea
+
 ## IDE (metals)
 .bsp
 .bloop
