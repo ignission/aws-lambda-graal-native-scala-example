@@ -34,7 +34,7 @@ lazy val root = (project in file("."))
         "io.circe"                      %% "circe-core"      % circeVersion,
         "io.circe"                      %% "circe-generic"   % circeVersion,
         "io.circe"                      %% "circe-parser"    % circeVersion,
-        "dev.zio"                       %% "zio"             % "1.0.5",
+        "dev.zio"                       %% "zio"             % "1.0.10",
         "com.softwaremill.sttp.client3" %% "core"            % "3.2.0",
         "ch.qos.logback"                 % "logback-classic" % "1.2.3",
         "org.scalatest"                 %% "scalatest"       % "3.2.3" % "test"
