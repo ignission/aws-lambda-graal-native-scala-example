@@ -29,7 +29,7 @@ lazy val root = (project in file("."))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= {
-      val circeVersion = "0.13.0"
+      val circeVersion = "0.14.1"
       Seq(
         "io.circe"                      %% "circe-core"      % circeVersion,
         "io.circe"                      %% "circe-generic"   % circeVersion,
