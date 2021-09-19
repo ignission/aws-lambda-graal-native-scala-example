@@ -7,7 +7,7 @@ lazy val deploy = taskKey[Unit]("Deploy to lambda")
 
 lazy val commonSettings = Seq(
   version := "0.3.0-SNAPSHOT",
-  scalaVersion := "2.13.5",
+  scalaVersion := "2.13.6",
   scalacOptions ++= List(
     "-deprecation",
     "-feature",
