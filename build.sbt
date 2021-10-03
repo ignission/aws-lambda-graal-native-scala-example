@@ -6,7 +6,7 @@ lazy val fixAll = taskKey[Unit]("Run scalafix / scalafmt")
 lazy val deploy = taskKey[Unit]("Deploy to lambda")
 
 lazy val commonSettings = Seq(
-  version := "0.3.0-SNAPSHOT",
+  version      := "0.3.0-SNAPSHOT",
   scalaVersion := "2.13.5",
   scalacOptions ++= List(
     "-deprecation",
